@@ -1,0 +1,276 @@
+.card {
+    perspective: 1000px;
+    width: 280px;
+    height: 280px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 10px 10px -5px rgb(0 0 0 / 4%);
+    display:none;
+    z-index: 900;
+}
+
+  .card button{
+    color: black;
+    margin: 0;
+    background: white;
+    border: none;
+    padding: 10px;
+  }
+  
+  .card-inner {
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .card-front, .card-back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .card-front {
+    z-index: 1;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .card-back {
+    border-radius: 10px;
+    overflow: hidden;
+    transform: rotateY(180deg);
+    display: none;
+    background-color: white;
+  }
+  
+  .card[data-show-back="back1"] .card-back1,
+  .card[data-show-back="back2"] .card-back2,
+  .card[data-show-back="back3"] .card-back3,
+  .card[data-show-back="back4"] .card-back4,
+  .card[data-show-back="back5"] .card-back5{
+    display: block;
+  }
+  
+
+  div#toolbar-header {
+    display: grid;
+    grid-template-columns: 50px 1fr 50px;
+    place-content: center;
+    width: 100%;
+    background: white;
+    border-bottom: 1px solid #dddddd;
+    place-items: center;
+    height: 50px;
+}
+div#toolbar-buttons {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    background: #dddddd;
+    place-items: center;
+    gap: 1px;
+    height: 230px;
+}
+div#toolbar-buttons button {
+    width: 100%;
+    height:100%;
+    display: grid;
+    gap: 5px;
+    background: #f2f2f2;
+}
+div#toolbar-buttons img {
+    padding: 4px;
+}
+div#toolbar-buttons img {
+    padding: 4px;
+}
+button img {
+    width: 33px;
+    margin: auto;
+}
+button.toolbar-close {
+    background: red;
+}
+.flip-title-ellipsis {
+    white-space: nowrap;      /* Mantén el texto en una sola línea */
+    overflow: hidden;         /* Oculta cualquier cosa que exceda el ancho del contenedor */
+    text-overflow: ellipsis;  /* Añade puntos suspensivos al final del texto cortado */
+    max-width: 150px;         /* Cambia esto por el ancho máximo que desees */
+}
+.flip-bold-text{
+    font-weight: 600;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+button#addTemplate {
+  border: 3px solid #cccccc;
+  border-radius: 10px;
+}
+
+.flip-content {
+    position: relative;
+    width: auto;
+    padding: 40px;
+    background: #f2f2f2;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    z-index: 5;
+    line-height: 1;
+    height: 230px;
+    overflow: hidden;
+}
+
+.flip-content-domain {
+  position: relative;
+  width: auto;
+  padding: 0 40px;
+  background: #f2f2f2;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  z-index: 5;
+  line-height: 1;
+  height: 230px;
+  overflow: hidden;
+  place-content: start;
+}
+
+div#toolbar-header img {
+  width: 25px;
+}
+button.toolbar-close {
+  background: none;
+  filter: invert(1);
+}
+p#templateIs {
+  display: none;
+}
+p#templateMessage {
+  text-align: center;
+}
+
+/* button#toolbar-drag {
+  visibility: hidden;
+} */
+
+button#toolbar-drag-front {
+  visibility: hidden;
+}
+.stepper button {
+  background: none;
+}
+span#current-domain,
+span#get-domain{
+  color: blue;
+  font-weight: 600;
+}
+input:focus {
+  outline: none;
+}
+
+
+/**GLOBAL CLASSES*/
+.flipcard-input,
+.flipcard-select{
+  border:none!important;
+  border: 3px solid #cccccc!important;
+  background: none!important;
+  height: 30px!important;
+  display: grid;
+  width: 100%;
+}
+.flipcard-message{
+  text-align:center;
+}
+button.flipcard-button {
+  border-radius: 10px!important;
+  color: black!important;
+  background: white!important;
+  border: 3px solid #cccccc!important;
+  padding: 10px!important;
+  display: grid;
+  width: 100%;
+  height:40px;
+}
+.stepper {
+  display: none!important;
+}
+div#content-1,
+div#content-2,
+div#content-3,
+div#content-4 {
+  place-content: center;
+  height: 230px;
+  gap: 10px;
+}
+.flipcard-title{
+  font-size: 1rem;
+  font-weight: 400;
+}

@@ -1,0 +1,51 @@
+
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="0" />
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="google" content="notranslate">
+		<link rel="stylesheet" type="text/css" href="../global/css/admin-sidebar.css">
+		<link rel="stylesheet" type="text/css" href="../global/css/admin-reset.css">
+		<link rel="stylesheet" type="text/css" href="./files.css">
+		
+	</head>
+	<body>
+		<div class="admin-container">
+			<div id="admin-sidebar"></div>			
+            <div class="admin-content">				
+				<div class="admin-content-title">
+					<h1 id="admin-title-text" class="admin-title-text"></h1>
+					<p id="admin-bread-crumb" class="admin-bread-crumb"></p>
+				</div>
+				<div id="grid" class="admin-content-grid"></div>		
+			</div>
+		</div>
+		<div id="deleteBox" style="visibility: hidden;">
+			<div class = "deleteContent">
+				<p>Type: <span id='fileName'></span><span> to delete this file. This is irreversible</span></p>
+				
+				<input id="fileInput" type="text" required>
+				<button id="deleteFile" onclick="deleteCheck()">DELETE</button>
+				<p id="fileUrl" style="display:none;"></p>
+				<p id="fileSha" style="display:none;"></p>
+				<p id="fileMessage"></p>
+				
+			</div>	
+		</div>
+		<footer>
+			<script src="../global/js/sidebar.js"></script>
+			<script src="../global/js/pageIs.js"></script>
+			<script src="../global/js/apis.js"></script>
+			<script src="../global/js/preloader.js"></script>
+			<script src="./files-list.js"></script>
+			<script src="./files-modal.js"></script>
+			<script src="./files-new.js"></script>
+			<script src="./files-delete.js"></script>
+		</footer>
+		
+	</body>
+</html>

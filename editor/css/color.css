@@ -1,0 +1,121 @@
+/* 
+#color-sidebar{
+    width: 300px;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    top: 0px;
+    right: -300px;
+    background-color: rgb(241, 241, 241);
+    z-index: 9999;
+} */
+
+#color-sidebar-header {
+    display: grid;
+    grid-template-columns: 1fr 35px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+#color-sidebar-input {
+    padding: 10px;
+    border: none;
+    text-align: center;
+}
+#color-sidebar-search {
+    background: red;
+    color: white;
+    border: none;
+    padding: 15px;
+}
+#color-sidebar-total {
+    text-align: center;
+    color: #aeaeae;
+    padding: 20px;
+    font-size: 12px;
+}
+button#color-solid-close {
+    width: 35px;
+    height: 35px;
+    display: grid;
+    place-content: center;
+}
+
+/* #color-sidebar-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(auto,170px));
+    place-content: space-evenly;
+    grid-gap: 40px;
+    padding:40px;  
+  } */
+
+.color-html{
+    height:75px;
+}
+#color-buttons {
+    height:35px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+.color-sidebar-items{ 
+    position:relative;
+    overflow: hidden;
+    background:white;
+    border-radius: 10px;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 10px 10px -5px rgb(0 0 0 / 4%);
+}
+.color-sidebar-alt {
+    display: grid;
+    margin: 10px;
+    font-size: small;
+    color: grey;
+}
+#color-sidebar-next-div {
+    display: grid;
+    place-content: center;
+}
+#color-sidebar-next-button {
+    background: #007dec;
+    color: white;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-bottom: 100px;
+    font-size: 20px;
+}
+
+#color-sidebar-settings {
+    display: grid;
+    grid-template-columns: 75px 75px auto;
+}
+#color-sidebar-settings select,
+#color-sidebar-settings input {
+    border: none;
+    padding: 5%;
+    text-align: center;
+    color: #cbcbcb;
+    font-family: system-ui;
+}
+#p-width,
+#p-height
+{
+    display: grid;
+    place-content: center;
+}
+.color-player {
+    position: relative;
+    
+  }
+  
+.color-player::after {
+content: "";
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 60px;
+height: 60px;
+background-image: url('../assets/svg/icons/color.svg');
+background-size: cover;
+}

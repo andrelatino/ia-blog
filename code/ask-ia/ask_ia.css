@@ -1,0 +1,44 @@
+#ia-div-modal {
+    display: grid;
+  }
+
+  #ia-button-close,
+  #ia-button-stop {
+    background: none;
+    padding:0;
+  }
+
+  
+  #ia-div-body {
+    width: auto;
+    height: auto;
+    display: grid;
+    padding: 20px;
+    background: gainsboro;
+    
+  }
+  #ia-div-footer {
+    grid-template-columns: 1fr 50px 50px;
+    display: grid;
+    padding: 10px;
+    background: white;
+    width: inherit;
+    border-radius: 10px;
+}
+#result {
+  display: inherit;
+  min-height: 40px;
+}
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+div#footer {
+  padding: 35px;
+  background: white;
+  display: grid;
+  grid-template-columns: 1fr 100px 100px;
+}
+p.code-info {
+  color: white;
+}

@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../global/css/admin-sidebar.css">
+    <link rel="stylesheet" type="text/css" href="../global/css/admin-reset.css">
+    <link rel="stylesheet" type="text/css" href="../global/css/preloader.css">
+    <link rel="stylesheet" type="text/css" href="./code.css">
+    <link rel="stylesheet" type="text/css" href="./ask-ia/ask_ia.css">
+
+    <!-- Highlight.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
+    <link id="theme-link" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+    <div class="admin-container">
+        <div id="admin-sidebar"></div>
+        <div class="admin-content">
+            <div class="admin-content-title">
+                <h1 id="admin-title-text" class="admin-title-text">code</h1>
+                <button id="editor-save">SAVE</button>
+            </div>
+            <div id="grid">
+				<p class="code-info">Current CSS Code</p>
+                <pre>
+                    <code class="css" id="code" contenteditable="true" spellcheck="false"></code>
+                </pre>
+                <div id="ia-div-modal" class="ia-div-modal">
+                    <div id="ia-div-result">
+						<p class="code-info">IA CSS Expert</p>
+                        <pre>
+                            <code class="css" id="result" contenteditable="false"></code>
+                        </pre>
+                    </div>
+					<div id="footer">
+						<input id="ia-imput-prompt" type="text" placeholder="Enter prompt..." />
+						<button id="ia-button-generate" onclick="generate()">SEND</button>
+						<button id="ia-button-stop" onclick="stop()">STOP</button>
+					</div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="preloaderModal" class="modal">
+        <div id="apiPreloader" class="preloader"></div>
+        <svg class="checkmark success-animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" style="display:none">
+            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+            <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+        </svg>
+        <svg class="crossmark failure-animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" style="display:none">
+            <circle class="crossmark__circle" cx="26" cy="26" r="25" fill="none" />
+            <line class="crossmark__line1" x1="15" y1="15" x2="37" y2="37" stroke-linecap="round" />
+            <line class="crossmark__line2" x1="37" y1="15" x2="15" y2="37" stroke-linecap="round" />
+        </svg>
+    </div>
+
+    <footer>
+        <script src="../global/js/sidebar.js"></script>
+        <script src="../global/js/apis.js"></script>
+        <script src="../global/js/preloader.js"></script>
+        <script src="./code-data.js"></script>
+
+        <!-- Highlight.js Script -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>
+            const ids = ['code', 'result'];  // Ejemplo de IDs que quieres resaltar
+
+const highlightBlocks = () => {
+    ids.forEach(id => {
+        const block = document.querySelector(`#${id}`);
+        if (block && !block.classList.contains('no-highlight')) {
+            // Si el bloque no tiene la clase 'no-highlight', aplicar highlight.js
+            block.textContent = block.textContent;  // Asegurar que estamos trabajando con texto plano
+            hljs.highlightElement(block);
+        }
+    });
+};
+        </script>
+        <script src="./ask-ia/ask_ia_api.js"></script>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,19 @@
+
+ {
+    "background_color": "#ebebeb",
+    "description": "Gridzy App",
+    "display": "standalone",
+    "icons": [
+      {
+        "src": "gridzy-icon.svg",
+        "type": "image/svg+xml",
+        "sizes": "512x512",
+        "purpose": "any"
+      }
+    ],
+    "name": "Gridzy App",
+    "orientation": "natural",
+    "short_name": "Gridzy App",
+    "start_url": "./",
+    "theme_color": "#ebebeb"
+  }

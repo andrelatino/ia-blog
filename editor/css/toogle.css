@@ -1,0 +1,7 @@
+button#toggleButton {
+    display: grid;
+    place-content: center;
+    width: 100%;
+    padding: 5%;
+    font-size: unset;
+}

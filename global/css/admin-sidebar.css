@@ -1,0 +1,188 @@
+
+body, html{
+    background: #f1f1f1;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.admin-sidebar {
+    height: 100vh;
+    display: grid;
+    place-content: start center;
+    position: sticky;
+    top: 0;
+    width: 150px;
+    overflow-y: scroll;
+    gap: 1px;
+    
+}
+
+#admin-sidebar-brand {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+    padding: 30px;
+    gap: 10px;
+    border-bottom: 1px solid #ebebeb;
+    font-size: 25px;
+}
+.admin-sidebar-button {
+    width: 150px;
+    display: grid;
+    place-items: center start;
+    grid-template-columns: 35px 1fr;
+    background: none;
+    border: none;
+    gap: 5px;
+    padding: 10px 20px;
+}
+img.admin-sidebar-icon {
+    padding: 5px;
+}
+.admin-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* background: #ebebeb; */
+    min-height: auto;
+}
+/* .admin-content-title {
+    display: grid;
+    width: calc(100% - 150px);
+    place-content: center;
+    height: 100px;
+    font-size: 33px;
+    grid-template-columns: 1fr;
+    gap: 15px;
+} */
+.admin-content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(auto,250px));
+    gap: 40px;
+    padding: 40px;
+    place-content: center;
+}
+.admin-content {
+    margin: 0px;
+    padding: 0 30px;
+    
+}
+img.admin-sidebar-plugin-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+img.admin-sidebar-plugin-icon {
+    width: 50px;
+}
+.admin-content-items {
+    position:relative;
+    background: white;
+    padding: 10%;
+    text-align: center;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    gap: 10px;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 10px 10px -5px rgb(0 0 0 / 4%);
+}
+.admin-content-items input,
+.admin-content-items button {
+    width: 100%;
+    height:35px;
+    border-radius: 5px;
+}
+.admin-content-items button {
+    border:none;
+}
+.admin-content-items input{
+    border:1px solid #dedede;
+    padding:10px;
+    
+}
+h1.admin-title-text {
+    font-size: clamp(3rem, 4vw, 5rem);
+    font-weight: 100;
+    color: #3d3d3d;
+    text-align: center;
+    padding: 10px;
+}
+
+.nav-style {
+    position: fixed;
+    bottom: 20px;
+    right: 27px;
+    padding: 20px;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: grid;
+    place-content: center;
+    border: none;
+    
+}
+.navigation {
+    display: grid;
+    background: white;
+    grid-template-columns: 30px 1fr;
+    padding: 15px;
+    align-items: center;
+}
+.open-btn {
+    background: blue;
+    color: #040404;
+    font-size: 16px;
+    z-index:1;
+}
+.close-btn {  
+    background: black;
+    color: white;
+    border: none;
+    border: none;
+    display: none;
+    font-size: 17px;
+    z-index:1;
+    
+}
+div#popup img {
+    object-fit: cover;
+    height: 30px;
+    width: 30px;
+}
+div#popup {
+    position: fixed;
+    bottom: 95px;
+    background: #ededed;
+    height: auto;
+    border-radius: 10px;
+    right: 28px;
+    display: grid;
+    grid-gap: 1px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    z-index: 99;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 10px 10px -5px rgb(0 0 0 / 4%);
+}
+div#popup a {
+    color: #010101;
+    text-decoration: none;
+    padding: 10px 5px;
+}
+#versionBox {
+    background-color: white;
+    display: grid;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+/* Overlay styles */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background color */
+    display: none; /* Initially hidden */
+    z-index: 1; /* Ensure it's above other content */
+  }

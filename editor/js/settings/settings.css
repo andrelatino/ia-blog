@@ -1,0 +1,124 @@
+/*SIDEBAR*/
+/* Hide all items by default */
+.disabled-button {
+    background-color: #ccc; /* Gray background */
+    color: #666; /* Dark gray text color */
+    cursor: not-allowed; /* Display a "not-allowed" cursor */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border: 1px solid #999; /* Gray border */
+    border-radius: 5px; /* Rounded corners */
+    user-select: none; /* Disable text selection */
+}
+
+.choices__inner {
+  background-color: #f9f9f900!important;
+}
+.choices__input {
+  background-color: #f9f9f900!important;
+}
+.choices__list--multiple .choices__item {
+  background-color: white!important;
+  border: 1px solid #00a5bb!important;
+  color: black!important;
+}
+#settings-sidebar{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    top: 0px;
+    right: -100%;
+    background-color: rgb(241, 241, 241);
+    z-index: 9999;
+}
+div#settings-sidebar-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 50px;
+  height: 50px;
+  place-items: center;
+  background: #eeeeee;
+  gap: 1px;
+}
+img.settings-close {
+    filter: invert(1);
+}
+div#settings-sidebar-grid {
+  padding: 0px;
+  display: grid;
+  gap: 1px;
+  background: #f1f1f1;
+}
+p.settings-subtitles {
+    margin-bottom: 10px;
+}
+.settings-fields {
+  background: #f1f1f1;
+  padding: 35px;
+}
+
+.tab-container {
+    display: block;
+  }
+  
+  .tab-button {
+    background-color: white;
+    border: none;
+    padding: 10px 20px;
+    width: 100%;
+    height: 100%;
+}
+  
+  .tab-content {
+    display: none;
+  }
+  
+  .tab-content.active {
+    display: initial;
+    outline:none!important;
+  }
+
+input.settings-input{
+    border: 3px solid #cccccc!important;
+    background: none!important;
+    height: 30px!important;
+    display: grid;
+    width: 100%;
+}
+  
+textarea.settings-input {
+  border: 3px solid #cccccc!important;
+  background: none!important;
+  height: 100px!important;
+  display: grid;
+  width: 100%;
+}
+input.settings-input,
+textarea.settings-input,
+.choices__inner
+{
+  border-radius:10px!important;
+  border:1px solid #c7c7c7!important;
+}
+
+.tab-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  border-top: 1px solid #f1f1f1;
+}
+.tabs-title {
+  font-size: 33px;
+  margin-bottom: 10px;
+  font-weight: 300;
+  font-family: system-ui;
+  text-transform: capitalize;
+}
+button#save-settings {
+  margin: 30px;
+  background: blue;
+  color: white;
+  font-weight: 600;
+  height: 50px;
+  margin-bottom: 100px;
+  border-radius: 10px;
+}

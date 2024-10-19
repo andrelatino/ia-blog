@@ -1,0 +1,54 @@
+#ia-div-modal {
+    z-index: 999999999;
+    position: fixed;
+    display: grid;
+    place-content: space-between;
+    bottom: 70px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 10px;
+    height:auto;
+    width:80vh;
+
+  }
+  
+  /* #ia-div-header {
+    width: 300px;
+    display: grid;
+    grid-template-columns: 50px 1fr 50px;
+    place-content: center;
+    place-items: center;
+    width: inherit;
+    background:blue;
+  } */
+
+  #ia-button-close,
+  #ia-button-stop {
+    background: none;
+    padding:0;
+  }
+  #ia-p-result {
+    height: 100px;
+    overflow: scroll;
+  }
+  input#ia-imput-prompt {
+    border:none;
+  }
+  
+  #ia-div-body {
+    width: auto;
+    height: auto;
+    display: grid;
+    padding: 20px;
+    background: gainsboro;
+    display: none;
+  }
+  div#ia-div-footer {
+    grid-template-columns: 50px 1fr 50px 50px 50px;
+    display: grid;
+    padding: 10px;
+    background: white;
+    width: inherit;
+    border-radius: 10px;
+}

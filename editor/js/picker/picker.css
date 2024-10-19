@@ -1,0 +1,24 @@
+div#picker-div {
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999999;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(3, 1, 1, 0.08);
+    border-radius: 15px;
+    overflow:hidden;
+}
+.a-color-picker-row.a-color-picker-rgbhex.a-color-picker-single-input {
+    display: none;
+}
+button#picker-close {
+    position: initial;
+    width: 100%;
+    margin-top: -5px;
+}
+p#gridBoxTxt {
+    width: 100%;
+    background: white;
+    text-align: center;
+}

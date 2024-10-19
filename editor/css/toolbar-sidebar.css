@@ -1,0 +1,10 @@
+div#toolbar-sidebar {
+    z-index: 99999999;
+    display: grid;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: white;
+    height: 100vh;
+    width: 300px;
+}

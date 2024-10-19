@@ -1,0 +1,136 @@
+.modal {
+    display: none; 
+    position: fixed; /* Stay in place */
+    z-index: 9999999; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black with opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Center the preloader inside the modal */
+.preloader {
+    margin: auto;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 0.5s linear infinite;
+    background-color: #151c20;
+}
+
+/* Success and Failure Styles */
+.preloader.success {
+    border-top-color: #2ecc71; /* Green for success */
+}
+
+.preloader.failure {
+    border-top-color: #e74c3c; /* Red for failure */
+}
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.modal.fade-out {
+    animation: fadeOut 0.3s ease-out forwards;
+}
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Checkmark Animation Styles */
+.success-animation {
+    margin: 0 auto;
+    display: none; /* Hidden by default */
+}
+
+.checkmark {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    stroke-width: 3;
+    stroke: #0f0;
+    stroke-miterlimit: 10;
+    box-shadow: inset 0 0 0 #0f0;
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+    position: relative;
+    top: 0px;
+    right: 0px;
+    margin: 0 auto;
+}
+
+.checkmark__circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 3;
+    stroke-miterlimit: 10;
+    stroke: #fff;
+    fill: #151c20;
+    animation: stroke .6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark__check {
+    transform-origin: 50% 50%;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke .3s cubic-bezier(0.65, 0, 0.45, 1) .8s forwards;
+}
+
+@keyframes stroke {
+    100% { stroke-dashoffset: 0; }
+}
+
+@keyframes scale {
+    0%, 100% { transform: none; }
+    50% { transform: scale3d(1.1, 1.1, 1); }
+}
+
+@keyframes fill {
+    100% { box-shadow: inset 0 0 0 30px #0f0; }
+}
+
+/* Cross (Failure) Animation Styles */
+/* Failure Cross Animation Styles */
+.failure-animation {
+    margin: 0 auto;
+    display: none; /* Hidden by default */
+    width: 50px;
+    height: 50px;
+}
+
+.crossmark__circle {
+    stroke-dasharray: 157;
+    stroke-dashoffset: 157;
+    stroke-width: 3;
+    stroke: #ffffff;
+    fill: #171e22;
+    animation: drawCircle 0.5s ease-in-out forwards;
+}
+
+.crossmark__line1, .crossmark__line2 {
+    stroke-dasharray: 71;
+    stroke-dashoffset: 71;
+    stroke-width: 3;
+    stroke: #e74c3c;
+    stroke-linecap: round;
+    animation: drawLine 0.5s ease-in-out 0.5s forwards;
+}
+
+@keyframes drawCircle {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes drawLine {
+    from { stroke-dashoffset: 71; }
+    to { stroke-dashoffset: 0; }
+}
+

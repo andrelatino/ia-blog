@@ -1,0 +1,605 @@
+<!doctype html>
+<html lang="en" id="builder">
+  <head>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" type="text/css" href="../global/css/preloader.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css">
+		<link rel="stylesheet" href="https://codemirror.net/5/theme/material.css">
+		<link rel="stylesheet" href="https://codemirror.net/5/theme/material-darker.css"> -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-beautify@1.14.0/js/lib/beautify-html.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-css.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.15.1/beautify-html.min.js"></script>  
+      
+
+  </head>
+  <body>
+    <script>
+      const getCssUser = localStorage.getItem('githubUser');
+      const getCssRepoName = localStorage.getItem('githubRepoName');
+      const urlCSS = `https://${getCssUser}.github.io/${getCssRepoName}/scripts/styles.css`;
+      const cssLink = document.createElement('link');
+      cssLink.rel = 'stylesheet';
+      cssLink.type = 'text/css';
+      cssLink.href = urlCSS;
+      document.head.appendChild(cssLink);
+    </script>
+    <!-- <script src="./js/page/pageIndexJson.js"></script> -->
+    <script src="./styles.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js@10.2.0/public/assets/scripts/choices.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/choices.js@10.2.0/public/assets/styles/choices.min.css" rel="stylesheet">
+
+    <!-- Preconnect to the Google Fonts server -->
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Load the Material Symbols Outlined font with display=swap -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=swap" />
+    <!-- <script src="./video.js"></script> -->
+
+    <link rel="stylesheet" type="text/css" href="./js/picker/picker.css">
+
+    <div id="picker-div" style="display:none;">
+      
+      <div class="picker" 
+      acp-color="#EFE9E7" 
+      acp-show-rgb="no"
+      acp-show-hsl="no"
+      acp-show-hex="yes"
+      acp-attach-to="picker-div"	
+      acp-show-alpha>
+      </div>
+      <button id="picker-close" onclick="closePicker()" class="picker-close">Close</button>
+      <p id="gridBoxTxt">Box ID</p>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/a-color-picker@1.1.8/dist/acolorpicker.js"></script>
+    <script src="./js/picker/picker.js"></script>
+    
+    
+    
+
+    <div id="ia-div-modal" class="ia-div-modal" style="display:none;">
+      <div id="ia-div-body">
+          <p id="ia-p-result"></p>
+      </div>
+      <div id="ia-div-footer">
+        <button id="ia-button-drag"><img src="./assets/svg/icons/drag-dots.svg"></button>
+        <input id="ia-imput-prompt" type="text" placeholder="Enter prompt..." />
+        <button id="ia-button-generate" onclick="generate()"><img src="./assets/svg/icons/arrow-right.svg"></button>
+        <button id="ia-button-stop" onclick="stop()"><img src="./assets/svg/icons/stop-circle.svg"></button>
+        <button id="ia-button-close" onclick="ia_closeModal()"><img src="./assets/svg/icons/close-circle.svg"></button>
+      </div>
+    </div>
+
+	<div id="editor-css" style="visibility:hidden;">
+		<div id="editor-css-content">
+		  <div id="editor-css-buttons" style="display:none;">
+        <button id="editor-drag"><img src="./assets/svg/icons/drag.svg"></button>
+        <button id="all-button" onclick="loadALLCss()">PC</button>
+        <button id="m-button" onclick="loadMCss()">Tablet</button>
+        <button id="xs-button" onclick="loadXSCss()">Mobile</button><button id="editor-css-close" onclick="cssEditorClose()"><img src="./assets/svg/icons/close.svg"></button></div>
+		  <div id="editor-css-inputs">
+			<p class="inputCssRules" id="inputCssRules"></p>
+      <textarea id="all-textarea" autocomplete="off" style="display:none;"></textarea>
+      <textarea id="m-textarea" autocomplete="off" style="display:none;"></textarea>
+      <textarea id="xs-textarea" autocomplete="off" style="display:none;"></textarea>
+		  </div>
+		  <div class="editor-css-ids">
+			<p class="inputTitleColor" style="display:block;"><span>Section : </span><span id="sectionID-text"></span></p>
+			<p class="inputTitleColor" style="display:block;"><span>Style : </span><span id="styleID-text"></span></p>
+			<p class="inputTitleColor" id="elementsTagId"><span id="elementTag">Element : </span><span id="elementID-text"></span></p>
+			<p class="inputTitleColor" style="display:block;"><span>Size : </span><span id="buttonID-text"></span></p>
+		  </div>
+		  	<button onclick="cssEditorClose()" class="editor-close">X</button>
+			<div id="editor-css-footer">	
+			  	<div id="editor-css-icons"> 
+					<button id="editor-btn-all" onclick="loadALLCss()" ><img src="../global/file/pc.svg"></button>
+					<button id="editor-btn-m" onclick="loadMCss()"><img src="../global/file/tablet.svg"></button>
+					<button id="editor-btn-xs" onclick="loadXSCss()" ><img src="../global/file/mobile.svg"></button>
+				</div>
+				<select id="editor-css-select"></select>
+			</div>
+		</div>
+	</div>
+
+    <div id="image-fg-modal" style="display:none;">
+      <div id="image-fg-container">
+     
+        <div id="image-fg-responsive">
+          <div id="image-all">          
+              <img id="image-all-thumbnail" src="./assets/svg/icons/upload-empty.svg">           
+          </div>
+        </div>
+
+        <div id = "image-fg-libraries">
+          <button id="imageWebSidebarButton" onclick="sidebarOpenClose(this)">
+            <span class="tooltiptext-right">Web</span>	
+          </button>
+          <button id="imageGithubSidebarButton" onclick="sidebarOpenClose(this)">
+            <span class="tooltiptext-right">Media</span>
+          </button>
+
+        </div>
+        
+        <button onclick="hide_FG_Modal(); closeImageSidebar(); closeAllImageSidebars()" class="video-close">
+              <img src="./assets/svg/icons/close.svg">
+        </button>
+
+        <p id="image-fg-id">ID</p>
+        <p id="image-fg-type">Type</p>
+        <p id="image-fg-url">Url</p>
+
+      </div> 
+    </div>
+
+    <div id="video-fg-modal" style="display:none;">
+      <div id="video-fg-container">
+     
+        <div id="video-fg-responsive">
+          <div id="video-all">          
+            <video id="video-all-thumbnail" autoplay loop muted loading="lazy" src="https://github.com/IAMEDIA360/videos/raw/main/1795203691-1.mp4"></video>           
+          </div>
+        </div>
+
+        <div id = "video-fg-libraries">
+          <button onclick="openWebVideos()"><span class="tooltiptext-right">Web</span></button>
+          <button onclick="openMediaVideos()"><span class="tooltiptext-right">Media</span></button>
+
+        </div>
+        
+        <button onclick="hide_Video_Modal(); closeVideoSidebars()" class="video-close">
+              <img src="./assets/svg/icons/close.svg">
+        </button>
+
+        <p id="video-fg-id">ID</p>
+        <p id="video-fg-type">Type</p>
+        <p id="video-fg-url">Url</p>
+
+      </div> 
+    </div>
+
+    
+    <div id="linkEditorModal" style="display:none;">
+      <div id="link-form">
+        <div id="link-header">
+          <button id="link-drag"><img src="../global/file/drag.svg"></button>
+					<div id="link-title">Edit link</div>
+          <button id="cancelEdit"><img src="../global/file/close.svg"></button>
+        </div>
+        <div id="link-body">
+             
+                <label for="linkTitle">Title</label>
+                <input type="text" id="linkTitle">
+          
+                <label for="linkUrl">Link</label>
+                <input type="text" id="linkUrl">
+
+                <label for="linkTarget">Target</label>
+                <select id="linkTarget">
+                    <option value="_self">Same tab</option>
+                    <option value="_blank">New tab</option>
+                </select>
+
+                <label for="linkClass">Class (optional)</label>
+                <input type="text" id="linkClass">
+
+                <button id="saveChanges">Update</button>
+           
+        </div>
+        <div id="link-footer">
+            
+            
+        </div>
+      </div>
+  </div>
+  
+
+    <div id="video-modal" style="display:none;"></div>
+
+
+
+    <div id="video-single-modal" style="display:none;"></div>
+    <div id="color-modal" style="display:none;"></div>
+    <div id="image-github-modal" style="visibility:hidden;">
+      <div id="image-github-buttons"><button id="image-github-drag"><img src="./assets/svg/icons/drag.svg"></button></div>
+      <div class="image-github-modal-content">
+        <div class="image-github-input-container"><input type="file" id="image-github-input" accept="image/*" onchange="document.getElementById('image-github-upload-preview').src = window.URL.createObjectURL(this.files[0])"></div>
+        <div id="image-github-preview"><img id="image-github-upload-preview" src="./assets/svg/icons/upload-empty.svg"></div>
+        <div class="crop"><input type="text" id="widthInput" value="000" readonly><input type="text" id="heightInput" value="000" readonly><input type="text" id="sizeWidthInput" value=""><input type="text" id="sizeHeightInput" value="">
+          <p id="widthRatioDisplay">Width Ratio: 0</p>
+          <p id="heightRatioDisplay">Height Ratio: 0</p>
+        </div><button onclick="githubImageCloseModal();" class="githubImageClose"><img src="./assets/svg/icons/close.svg"></button><button id="image-github-upload-button">Upload your image</button>
+      </div>
+    </div>
+    <div id="video-github-modal" style="visibility:hidden;">
+      <div id="video-github-buttons"><button id="video-github-drag"><img src="./assets/svg/icons/drag.svg"></button></div>
+      <div class="video-github-modal-content">
+        <div class="video-github-input-container"><input type="file" id="video-github-input" accept="video/*" onchange="document.getElementById('video-github-upload-preview').src = window.URL.createObjectURL(this.files[0])"></div>
+        <div id="video-github-preview"><img id="video-github-upload-preview" src="./assets/svg/icons/upload-empty.svg"></div><button onclick="githubImageCloseModal();" class="close-button"><img src="./assets/svg/icons/close.svg"></button><button id="video-github-upload-button">Upload your video</button>
+      </div>
+    </div>
+    <div id="file-github-modal" style="visibility:hidden;">
+      <div id="file-github-buttons"><button id="file-github-drag"><img src="./assets/svg/icons/drag.svg"></button></div>
+      <div class="file-github-modal-content">
+        <div class="file-github-input-container"><input type="file" id="file-github-input" accept=".docx, .pptx, .xlsx, .txt, .pdf, .zip, .gz, .tgz" onchange="document.getElementById('file-github-upload-preview').src = window.URL.createObjectURL(this.files[0])"></div>
+        <div id="file-github-preview"><img id="file-github-upload-preview" src="./assets/svg/icons/upload-empty.svg"></div><button onclick="githubFileCloseModal();" class="close-button"><img src="./assets/svg/icons/close.svg"></button><button id="file-github-upload-button">Upload your file</button>
+      </div>
+    </div>
+    <div id="admin">
+      
+      <div id="page">
+        <p id="site-title" class="site-title"></p>
+        <div id="content">
+          <div id="holder">
+            <div id="empty-section"></div>
+            <div id="grid-wrapper">
+                <!--GRID PAGE-->
+                <grid-editor-header>
+                  <div id="editor-css-icons"> 
+                    <button id="editor-btn-all" onclick="changeViewMode('pc')"><img src="../global/file/pc.svg"></button>
+                    <button id="editor-btn-m" onclick="changeViewMode('tablet')"><img src="../global/file/tablet.svg"></button>
+                    <button id="editor-btn-xs" onclick="changeViewMode('mobile')"><img src="../global/file/mobile.svg"></button>
+                    <!-- <button id="editor-switch" onclick="editorSwitch()"><img src="../global/file/mobile.svg"></button> -->
+                    <!--
+                    <a 
+                    id="responsive" 
+                    data-text="Try" 
+                    href="javascript:void((function(d){if(self!=top||d.getElementById('toolbar')&amp;&amp;d.getElementById('toolbar').getAttribute('data-resizer'))return false;d.write('<!DOCTYPE HTML><html style=&quot;opacity:0;&quot;><head><meta charset=&quot;utf-8&quot;/></head><body>
+                      
+                      
+                      
+                      <a data-viewport=&quot;1280x720&quot; data-icon=&quot;display&quot; class=&quot;active&quot;>Old PC</a>
+                      <a data-viewport=&quot;375x677&quot; data-icon=&quot;mobile&quot; class=&quot;inactive&quot;>Mobile</a>
+
+                      <script src=&quot;./js/responsive/resizer.js&quot;></script></body></html>')})(document));">
+                    </a>-->
+                
+                  </div> 
+                </grid-editor-header>
+                
+                
+                
+                
+                  <grid-page id="grid-page" contenteditable="false" class="grid-page" data-type="page">
+                    <grid-body id="grid-body"></grid-body>
+                  </grid-page>
+
+                
+              
+              
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="image-sidebar">
+      <div class="image-sidebar-search"><input type="text" id="image-sidebar-search-input" placeholder="Search..." required=""><button id="image-sidebar-search-button" onclick="searchImages();"><img src="./assets/svg/icons/search-right.svg"></button><button id="image-sidebar-next-button" onclick="loadNextPage();"><img src="./assets/svg/icons/next.svg"></button><button id="image-sidebar-close-button" onclick="closeAllImageSidebars()"><img src="./assets/svg/icons/close-black.svg"></button>
+        <p id="image-sidebar-subtotal"></p>
+        <p id="image-sidebar-total"></p>
+      </div>
+      <div id="image-sidebar-settings"><input type="text" id="image-settings-width" placeholder="Width" value="1280" required><input type="text" id="image-settings-height" placeholder="Height" value="720" required><input type="text" id="image-settings-type" placeholder="Orientation" value="landscape" required></div>
+      <div id="image-sidebar-grid"></div>
+    </div>
+    <div id="video-web-sidebar">
+      <div id="video-sidebar-header">
+        <input type="text" id="video-sidebar-input" placeholder="Search..." required>
+        <button type="submit" id="video-sidebar-search-button" onclick="searchVideos();"><img src="./assets/svg/icons/search-right.svg"></button>
+        <button type="submit" id="video-sidebar-show-button" onclick="cleanView();"><img src="./assets/svg/icons/show.svg"></button>
+        <button type="submit" id="video-sidebar-clean-button" onclick="cleanShow();"><img src="./assets/svg/icons/hide.svg"></button>
+        <button id="video-sidebar-next-button" onclick="loadNextVideos()"><img src="./assets/svg/icons/next.svg"></button>
+        <button id="video-sidebar-close-button" onclick="closeWebVideos()"><img src="./assets/svg/icons/close-black.svg"></button>
+      </div>
+      <p id="video-sidebar-total"></p>
+      <div id="video-sidebar-grid"></div>
+    </div>
+    <div id="video-media-sidebar">
+      <div id="video-media-sidebar-header">
+        <input type="text" id="video-media-sidebar-input" placeholder="Search..." required>
+        <button type="submit" id="video-media-sidebar-search-button" onclick="searchVideos();"><img src="./assets/svg/icons/search-right.svg"></button>
+        <button id="video-media-sidebar-next-button" onclick="loadNextVideos();">next</button>
+        <button id="video-media-sidebar-upload-button" onclick="githubUploadVideo()"><img src="./assets/svg/icons/upload=black.svg"></button>
+        <button id="video-media-close-button" onclick="closeMediaVideos()"><img src="./assets/svg/icons/close-black.svg"></button>
+      </div>
+      <p id="video-media-sidebar-total"></p>
+      <div id="video-media-sidebar-grid"></div>
+    </div>
+    <div id="color-solid-sidebar" style="display:none;">
+      <div id="color-sidebar-header">
+        <div id="color-buttons"><button id="color-orange" style="background:orange;"></button><button id="color-yellow" style="background:yellow;"></button><button id="color-green" style="background:green;"></button><button id="color-red" style="background:red;"></button><button id="color-purple" style="background:purple;"></button><button id="color-black" style="background:black;"></button><button id="color-brown" style="background:brown;"></button><button id="color-gray" style="background:gray;"></button><button id="color-white" style="background:white;"></button><button id="color-blue" style="background:blue;"></button><button id="color-turquoise" style="background:turquoise;"></button><button id="color-pink" style="background:pink;"></button></div><button id="color-solid-close"><img src="./assets/svg/icons/close-black.svg"></button>
+      </div>
+      <p id="color-sidebar-total"></p>
+      <div id="color-sidebar-grid"></div>
+    </div>
+    <div id="pattern-sidebar" class="pattern-sidebar">
+      <div class="pattern-settings"><input type="text" id="pattern-search-input" placeholder="Search..." required=""><button id="pattern-search-button"><img src="./assets/svg/icons/search-right.svg"></button><button id="pattern-search-next"><img src="./assets/svg/icons/next.svg"></button><button id="pattern-search-close" onclick="patternSidebarClose()"><img src="./assets/svg/icons/close-black.svg"></button></div>
+      <div class="pattern-box">
+        <div id="pattern-sidebar-grid" class=""></div>
+      </div>
+    </div>
+    <div id="image-github-sidebar" style="bottom:-135px">
+      <div id="image-github-sidebar-search"><input type="text" id="image-github-sidebar-search-input" placeholder="Search..." required><button type="submit" id="image-github-sidebar-add-new" onclick="githubUploadImage();"><img src="./assets/svg/icons/add-white.svg"></button><button type="submit" id="image-github-sidebar-search-button" onclick="closeGithubImageSidebar();"><img src="./assets/svg/icons/close.svg"></button></div>
+      <p id="image-github-sidebar-total"></p>
+      <div id="image-github-sidebar-grid"></div>
+      <div id="image-github-sidebar-next-div"><button id="image-github-sidebar-next-button" onclick="loadNextPage();"> + </button></div>
+    </div>
+    <div id="settings-sidebar" style="visibility:hidden;">
+      <div id="settings-sidebar-header">
+        <button class="tab-button" onclick="openTab('tab1')">PAGE</button>
+        <button class="tab-button" onclick="openTab('tab2')">GLOBAL</button>
+        <button type="submit" id="settings-sidebar-files" onclick="settingsCloseSidebar()">
+          <img class="settings-close" src="./assets/svg/icons/close.svg">
+        </button>
+      </div>
+      <div class="tab-container">
+        <div id="tab1" class="tab-content active">
+          <div id="settings-sidebar-grid">
+            <div class="settings-fields">
+              <h2 class="tabs-title">Seo</h2>
+              <p class="settings-subtitles">Title</p><input class="settings-input">
+              <p class="settings-subtitles">Description</p><textarea class="settings-input"></textarea>
+              <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+
+            </div>
+            <div class="settings-fields">
+              <h2 class="tabs-title">Scripts</h2>
+              <p class="settings-subtitles">Header</p><select id="selectHeader" class="js-choice" multiple></select>
+              <p class="settings-subtitles">Footer</p><select id="selectFooter" class="js-choice" multiple></select>
+            </div><button type="button" id="save-settings">SAVE PAGE SETTINGS</button>
+          </div>
+        </div>
+        <div id="tab2" class="tab-content">
+          <button onclick="css_page_open('page-laptop.css','laptop');">
+            <img src="./assets/svg/icons/html.svg">
+            <span class="tooltiptext">Page CSS</span>
+          </button>
+          <button onclick="js_page_open('page-global.js','global');">
+            <img src="./assets/svg/icons/html.svg">
+            <span class="tooltiptext">Page JS</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div id="file-github-sidebar" style="bottom:-135px">
+      <div id="file-github-sidebar-search"><input type="text" id="file-github-sidebar-search-input" placeholder="Search..." required><button type="submit" id="file-github-sidebar-add-new" onclick="githubUploadFile();"><img src="./assets/svg/icons/add-white.svg"></button><button type="submit" id="file-github-sidebar-search-button" onclick="closeGithubFileSidebar();"><img src="./assets/svg/icons/close.svg"></button></div>
+      <p id="file-github-sidebar-total"></p>
+      <div id="file-github-sidebar-grid"></div>
+      <div id="file-github-sidebar-next-div"><button id="file-github-sidebar-next-button" onclick="loadNextPage();"> + </button></div>
+    </div>
+    <div id="template-github-sidebar" style="bottom:-135px">
+      <div id="template-github-sidebar-search"><input type="text" id="template-github-sidebar-search-input" placeholder="Search..." required><button type="submit" id="template-github-sidebar-add-new" onclick="githubUploadTemplate();"><img src="./assets/svg/icons/add-white.svg"></button><button type="submit" id="template-github-sidebar-search-button" onclick="closeGithubTemplateSidebar();"><img src="./assets/svg/icons/close.svg"></button></div>
+      <p id="template-github-sidebar-total"></p>
+      <div id="template-github-sidebar-grid"></div>
+      <div id="template-github-sidebar-next-div"><button id="template-github-sidebar-next-button" onclick="loadNextPage();"> + </button></div>
+    </div>
+   
+    <div id="mobileMenu"></div>
+
+    <div id="editorHtml" style="visibility:hidden;">
+      <div class="editor-raw-header">
+        <div class="raw-html-title">Html</div>
+        <button onclick="html_update()">S</button>
+        <button onclick="html_clean()">B</button>
+        <button class="raw-html-close" onclick="html_close()">X</buton>
+      </div>
+      <div id="html_editor"></div>
+    </div>
+
+    <div id="js_editor" style="visibility:hidden;">
+      <div class="js_header">
+        <div class="js_title">Js</div>
+        <button onclick="js_update()">S</button>
+        <button onclick="js_clean()">B</button>
+        <button class="js_close" onclick="js_close()">X</buton>
+      </div>
+      <div id="js_code"></div>
+    </div>
+
+    <div id="css_editor" style="visibility:hidden;">
+      <div class="css_header">
+        <div class="css_title"> 
+          <div id="css_title">Css</div>
+        </div>
+        <div class="css_buttons"> 
+          <button onclick="css_update()">S</button>
+          <button onclick="css_clean()">B</button>
+          <button onclick="css_open('laptop')"><img src="../global/file/pc.svg"></button>
+          <button onclick="css_open('tablet')"><img src="../global/file/tablet.svg"></button>
+          <button onclick="css_open('mobile')"><img src="../global/file/mobile.svg"></button>
+          <button class="css_close" onclick="css_close()">X</buton>
+        </div>
+        <p id="css_size">laptop</p>
+      </div>
+      <div id="css_code"></div>
+    </div>
+
+    <div id="css_page_editor" style="visibility:hidden;">
+      <div class="css_page_header">
+        <div class="css_page_title"> 
+          <div id="css_page_title">Css</div>
+        </div>
+        <div class="css_page_buttons"> 
+          <button onclick="css_page_update()">S</button>
+          <button onclick="css_page_clean()">B</button>
+          <button onclick="css_page_open('page-laptop.css','laptop')"><img src="../global/file/pc.svg"></button>
+          <button onclick="css_page_open('page-tablet.css','tablet')"><img src="../global/file/tablet.svg"></button>
+          <button onclick="css_page_open('page-mobile.css','mobile')"><img src="../global/file/mobile.svg"></button>
+          <button class="css_page_close" onclick="css_page_close()">X</buton>
+        </div>
+        <p id="css_page_id">page-laptop.css</p>
+        <p id="css_page_size">laptop</p>
+      </div>
+      <div id="css_page_code"></div>
+    </div>
+
+    <div id="js_page_editor" style="visibility:hidden;">
+      <div class="js_page_header">
+        <div class="js_page_title"> 
+          <div id="js_page_title">Css</div>
+        </div>
+        <div class="js_page_buttons"> 
+          <button onclick="js_page_update()">S</button>
+          <button onclick="js_page_clean()">B</button>          
+          <button class="js_page_close" onclick="js_page_close()">X</buton>
+        </div>
+        <p id="js_page_id">page-laptop.css</p>
+        <p id="js_page_size">laptop</p>
+      </div>
+      <div id="js_page_code"></div>
+    </div>
+
+
+    <div id="props_editor" style="visibility:hidden;">
+      <div class="props_header">
+        <div class="props_title">Props</div>
+        <button onclick="props_update()">S</button>
+        <button onclick="props_clean()">B</button>
+        <button class="props_close" onclick="props_close()">X</buton>
+      </div>
+      <div id="props_code"></div>
+    </div>
+
+    <div id="section_editor" style="visibility:hidden;">
+      <div class="section_header">
+        <div class="section_title">Section</div>
+        <button onclick="section_update()">S</button>
+        <button onclick="section_clean()">B</button>
+        <button class="section_close" onclick="section_close()">X</buton>
+      </div>
+      <div id="section_code"></div>
+    </div>
+    
+    
+    <div id="preloaderModal" class="modal">
+      <div id="apiPreloader" class="preloader"></div>
+      <!-- Success Checkmark Animation -->
+      <svg class="checkmark success-animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" style="display:none">
+        <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+        <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+      </svg>
+      <!-- Failure Cross Animation -->
+      <svg class="crossmark failure-animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52" style="display:none">
+        <circle class="crossmark__circle" cx="26" cy="26" r="25" fill="none" />
+        <line class="crossmark__line1" x1="15" y1="15" x2="37" y2="37" stroke-linecap="round" />
+        <line class="crossmark__line2" x1="37" y1="15" x2="15" y2="37" stroke-linecap="round" />
+      </svg>
+    </div>
+    <div id="overlay_overlay"></div>
+    
+    <!-- Color Picker Modal -->
+    <template id="picker_colorModalTemplate">
+      <div id="picker_colorModal" class="picker_modal">
+        <div class="picker_modal-content">
+          <span class="picker_close" onclick="picker_closeModal()">&times;</span>
+          <p id="picker_modalHeader">ID: <span id="picker_elementId"></span></p>
+          <input type="color" id="picker_colorPicker" oninput="picker_previewColor()"><br><br>
+          <label for="picker_alphaRange">Transparencia: <span id="picker_alphaPercentage">100%</span></label><br>
+          <input type="range" id="picker_alphaRange" min="0" max="1" step="0.01" value="1" oninput="picker_previewColor()"><br><br>
+        </div>
+      </div>
+    </template>
+
+    <template id="quickbar-editor">
+      <div class="template-header">
+        <p class="template-tag" style="text-transform:lowercase;"></p>
+        <p class="template-id"></p>
+      </div>
+      <div class="template-body">
+
+        <button onclick="askAI()" class="quickbar-item askAI"><img class="ai-icon" src="../global/file/assistant.svg"> AI Assistant</button>
+        <button onclick="applySpan()" class="quickbar-item">Add ID</button>
+        <button onclick="removeSpan()" class="quickbar-item">Remove ID</button>
+        <!-- <button onclick="deleteElement()" class="quickbar-item">delete Element</button>
+        <button onclick="selectAllElements()" class="quickbar-item">Select All</button>
+        <button onclick="clearStyles()" class="quickbar-item">Clear Styles</button>
+        <button onclick="clearAll()" class="quickbar-item">Clear All</button>
+        <button onclick="applyColor()" class="quickbar-item">Color</button> -->
+    
+        <!-- <select id="alignSelector" onchange="applyAlign(this.value)" class="quickbar-item">
+            <option value="" disabled selected>Align</option>  
+            <option value="left">Left</option>
+            <option value="center">Center</option>
+            <option value="right">Right</option>
+            <option value="justify">Justify</option>
+        </select> -->
+
+        
+        <!-- <select id="lineHeightSelector" onchange="applyLineHeight(this.value)" class="quickbar-item">
+          <option value="" disabled selected>Line H.</option>
+          <option value="1">1</option>
+          <option value="1.1">1.1</option>
+          <option value="1.2">1.2</option>
+          <option value="1.3">1.3</option>
+          <option value="1.4">1.4</option>
+          <option value="1.5">1.5</option>
+          <option value="1.6">1.6</option>
+          <option value="1.7">1.7</option>
+          <option value="1.8">1.8</option>
+          <option value="1.9">1.9</option>
+          <option value="2">2</option>
+      </select> -->
+
+      
+      <!-- <select id="textSelector" onchange="applyText(this.value)" class="quickbar-item">
+        <option value="" disabled selected>Texte</option>
+        <option value="p">p</option>
+        <option value="h1">H1</option>
+        <option value="h2">H2</option>
+        <option value="h3">H3</option>
+        <option value="h4">H4</option>
+        <option value="h5">H5</option>
+        <option value="h6">H6</option>
+    </select> -->
+    
+        <!-- <select id="formatSelector" onchange="applyFormat(this.value)" class="quickbar-item">
+            <option value="" disabled selected>Format</option>  
+            <option value="bold">Bold</option>
+            <option value="italic">Italic</option>
+            <option value="underline">Underline</option>
+            <option value="strikethrough">Strikethrough</option>
+        </select>
+         -->
+        
+  
+        
+      </div>
+    </template>
+
+    <template id="quickbar-elements">
+      <div class="template-header">
+        <p class="template-tag" style="text-transform:lowercase;"></p>
+        <p class="template-id"></p>
+      </div>
+      <div class="template-body">
+
+        <button onclick="applySpan()" class="quickbar-item">Add Span</button>
+        <button onclick="removeSpan()" class="quickbar-item">Remove Span</button>
+        <button onclick="deleteElement()" class="quickbar-item">delete Element</button>
+
+      </div>
+    </template>
+  
+
+
+	  <footer>
+      <script src="./js/quickbars/quickbars-editor.js" defer></script>
+      <script src="./js/quickbars/quickbars-elements.js" defer></script>
+      <script type="module" src="./js/quickbars/quickbars-assistant.js" defer></script>
+      <script src="./js/menu/menu.js" defer></script>
+      <script src="./scripts.js"></script>
+      <script src="../global/js/preloader.js"></script>
+    </footer>
+
+    
+
+  </body>
+</html>

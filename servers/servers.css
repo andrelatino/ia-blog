@@ -1,0 +1,135 @@
+.servers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    gap: 25px;
+    padding-bottom: 200px;
+    place-content: center;
+}
+h2.servers-name {
+    background: white;
+    padding-bottom: 15px;
+    font-size: 33px;
+    font-weight: 200;
+}
+.servers-items{
+    position: relative;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    display: grid;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 10px 10px -5px rgb(0 0 0 / 4%);
+    height:250px;
+    width:300px;
+    place-content: center;
+    place-items: center;
+    gap:20px;
+}
+.servers-subtitle {
+    grid-column: 1 / -1;
+    padding: 0px 0px;
+    display: flex;
+    grid-gap: 20px;
+    place-items: center;
+}
+.servers-add {
+    width: 50px;
+    height: 50px;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    display:none;
+}
+.servers-cta {
+    padding-top: 20px;
+    background: white;
+}
+.servers-content {
+    display: grid;
+    gap: 10px;
+    place-items: center;
+
+}
+.servers-content input {
+    width: 100%;
+    height: 35px;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    padding: 0px 15px;
+}
+img.servers-icon {
+    width: 100px;
+    height: 100px;
+}
+button.servers-edit {
+    background: blue;
+    width: 100%;
+    height: 35px;
+    border: none;
+    color: white;
+    border-radius: 7px;
+    max-width: 150px;
+}
+button.servers-delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: red;
+    margin: 10px;
+    padding: 7px;
+    box-sizing: border-box;
+    width: 35px;
+    height:35px;
+    border-radius: 50%;
+    border:none;
+}
+p.servers-name {
+    font-size: 14px;
+    color: #909090;
+    background: white;
+    padding: 5px;
+}
+.servers-modal-content, 
+.servers-modal-header {
+    display: grid;
+    padding: 20px;
+    gap: 20px;
+}
+.servers-modal-header {
+    text-align: center;
+    font-size: 30px;
+}
+.servers-input {
+    border: 1px solid #c6c6c6;
+    height: 35px;
+    padding:10px;
+    width:100%;
+}
+.servers-button {
+    background: #f1f1f1;
+    width: 100%;
+    height: 35px;
+    border: none;
+    color: black;
+    border-radius: 7px;
+    width: 100%;
+}
+img#server-addItem {
+    width: 50px;
+    height: 50px;
+}
+.admin-content-title {
+    place-items: center;
+    display: flex;
+    place-content: center;
+}
+button#addButton {
+    display: grid;
+    place-content: center;
+    background: none;
+    border: none;
+    height: 250px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 10px 10px -5px rgb(0 0 0 / 4%);
+}

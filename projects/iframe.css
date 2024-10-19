@@ -1,0 +1,45 @@
+
+.thumbnail-container {
+    width: calc(1440px * 0.2);
+    height: calc(900px * 0.2);
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    background: #f9f9f9;
+  }
+  
+
+  .thumbnail-container::before {
+    position: absolute;
+    left: calc(50% - 16px);
+    top: calc(50% - 18px);
+    opacity: 0.2;
+    display: block;
+    -ms-zoom: 2;
+    -o-transform: scale(2);
+    -moz-transform: scale(2);
+    -webkit-transform: scale(2);
+    
+  }
+  .thumbnail {
+    -ms-zoom: 0.2;
+    -moz-transform: scale(0.2);
+    -moz-transform-origin: 0 0;
+    -o-transform: scale(0.2);
+    -o-transform-origin: 0 0;
+    -webkit-transform: scale(0.2);
+    -webkit-transform-origin: 0 0;
+  }
+  
+
+  .thumbnail, .thumbnail iframe {
+    width: 1500px;
+    height: 1000px;
+  }
+  div#iframe-box {
+    width: 300px;
+    height: 200px;
+    margin: auto;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 10%), 0 10px 10px -5px rgb(0 0 0 / 4%);
+    overflow: hidden;
+  }
