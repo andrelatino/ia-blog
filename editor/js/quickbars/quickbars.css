@@ -202,6 +202,7 @@ div#ai-chat {
     place-items: center;
     gap: 1px;
     background: white;
+    border-bottom: 1px solid #cccccc;
 }
 select#ai-select {
     border-radius: 5px;
