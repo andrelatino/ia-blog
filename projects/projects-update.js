@@ -1,5 +1,5 @@
 // async function createRepo() {
-//     var YOUR_TOKEN = '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';
+//     var YOUR_TOKEN = '';
 //     var apiUrl = 'https://api.github.com';
 //     var inputName = document.getElementById('inputNameValue');
 //     var inputNameValue = inputName.value.toLowerCase();

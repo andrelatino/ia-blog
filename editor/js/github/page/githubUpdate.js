@@ -2,7 +2,7 @@ function updatePage() {
     const username = "andrelatino";
     const repoName = "site-export";
     const fileName = "index.html";
-    const accessToken = "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";
+    const accessToken = githubApi;
   
     // Retrieve the HTML content from local storage
     const pageAdmin = localStorage.getItem('pageProd');

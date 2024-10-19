@@ -22,7 +22,7 @@ function addNewHtmlFileToGithub(username, repoName, fileName, content, token, co
     return response.json();
   })
   .then(data => {
-    pageID('andrelatino', 'site-export', 'index.html', 'main', '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')
+    pageID('andrelatino', 'site-export', 'index.html', 'main', githubApi)
     .then(sha => {
       console.log(`pageID : ${sha}`);
       localStorage.setItem('pageID', sha);
@@ -43,7 +43,7 @@ function createNewPage() {
   const username = "andrelatino";
   const repoName = "site-export";
   const fileName = "index.html";
-  const accessToken = "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";
+  const accessToken = githubApi;
 
   // Retrieve the HTML content from local storage
   const pageAdmin = localStorage.getItem('pageAdmin');
@@ -70,7 +70,7 @@ function createNewPage() {
   // Call the function to create the new file in the repository
   addNewHtmlFileToGithub(username, repoName, fileName, html, accessToken, "Added new page to website")
     .then(sha => {
-      getSha('andrelatino', 'site-export', 'index.html', 'main', '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')
+      getSha('andrelatino', 'site-export', 'index.html', 'main', githubApi)
       .then(sha => {
 
         console.log(`pageID : ${sha}`);
